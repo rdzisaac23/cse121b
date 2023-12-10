@@ -1,30 +1,24 @@
-// copyright year
-document.querySelector('#year').textContent = new Date().getFullYear();
+import { toggleMenu, setupHamburgerMenu } from './sidebar.js';
+import { performSearch, performSearchByAuthor, displayBooks } from './search.js';
 
-// toggle menu in small view
-const toggleMenu = () => {
-    document.querySelector('#menu').classList.toggle('open');
-}
+// Centralized DOM selectors
+const toggleMenuButton = document.querySelector('#toggleMenu');
+const searchButton = document.getElementById('enter');
+const searchBox = document.getElementById('search-box');
+const yearElement = document.querySelector('#year');
 
-document.querySelector('#toggleMenu').addEventListener('click', toggleMenu);
+// Named function for handling Enter key in search box
+const handleEnterKeyPress = (event) => {
+    if (event.key === 'Enter') {
+        performSearch();
+    }
+};
 
-document.addEventListener('DOMContentLoaded', function() {
-    const hamburger = document.querySelector('.hamburger');
-    const aside = document.querySelector('aside');
-    const main = document.querySelector('main');
+// Set up event listeners
+toggleMenuButton.addEventListener('click', toggleMenu);
+document.addEventListener('DOMContentLoaded', setupHamburgerMenu);
+searchButton.addEventListener('click', performSearch);
+searchBox.addEventListener('keyup', handleEnterKeyPress);
 
-    hamburger.addEventListener('click', function() {
-        // Check if aside is open
-        const isAsideOpen = aside.style.right === '0px';
-
-        if (isAsideOpen) {
-            // Close the sidebar
-            aside.style.right = '-250px';
-            main.style.marginTop = '0';
-        } else {
-            // Open the sidebar
-            aside.style.right = '0';
-            main.style.marginTop = '250px'; // Adjust based on the height of the aside
-        }
-    });
-});
+// Set copyright year using modern JavaScript features
+yearElement.textContent = new Date().getFullYear();

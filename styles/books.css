@@ -9,7 +9,7 @@ body, html {
     font-family: Arial, sans-serif;
     line-height: 1.6;
     color: #333;
-    background-color: #f4f4f4;
+    background-color: #fffffff2;
 }
 
 /* Hamburger Menu Icon */
@@ -26,8 +26,8 @@ body, html {
 
 /* Navigation Sidebar */
 aside {
-    background-color: #333;
-    color: white;
+    background-color: #cde9fa;
+    color: rgb(40, 39, 39);
     width: 250px;
     height: 100%;
     position: fixed;
@@ -45,15 +45,14 @@ aside nav ul {
 
 aside nav a {
     text-decoration: none;
-    color: white;
+    color: rgb(40, 39, 39);
     display: block;
     padding: 10px 20px;
-    transition: background-color 0.3s ease-in-out;
 }
 
-aside nav a:hover,
-aside nav .current {
+aside nav a:hover{
     background-color: #555;
+    border-radius: 10px;
 }
 
 /* Main Content Styles */
@@ -66,10 +65,46 @@ main h2 {
     margin-bottom: 15px;
 }
 
+main section{
+    margin-bottom: 20px;
+}
+
+section div.books-grid{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 20px;
+}
+
+/* Search Bar */
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-box {
+    flex-grow: 1;
+    margin-right: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background: aliceblue;
+    border-color: aqua;
+}
+
+button.author-search {
+    border-style: none;
+    background: none;
+    color: #5d64f3;
+}
+
+
+
+
 /* Footer Styles */
 footer {
-    background-color: #333;
-    color: white;
+    background-color: #cde9fa;
+    color: rgb(18, 18, 18);
     text-align: center;
     padding: 10px;
     position: fixed;
@@ -85,10 +120,14 @@ footer {
     }
 
     aside {
-        right: 0; /* Always show sidebar on larger screens */
+        left: 0; /* Always show sidebar on larger screens */
     }
 
     main {
         margin-left: 250px; /* Adjust main content position */
+    }
+
+    section div.books-grid{
+        grid-template-columns: repeat(3, 1fr);
     }
 }
